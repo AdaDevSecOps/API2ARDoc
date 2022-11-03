@@ -1,0 +1,46 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:29760",
+      "sslPort": 0
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "API2ARDoc": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ENV_tConnDB": "Data Source=202.44.55.96;Initial Catalog=SKC_Fullloop2;User ID=sa;Password=GvFhk@61;Connection Timeout=30;Connection Lifetime=0;Min Pool Size=30;Max Pool Size=100;Pooling=true;",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ENV_tRQHost": "6UO8oNdWtMjPRYFhoyAywQWEt0QOrU1+16kkO3pgh0M=",
+        "ENV_tRQUsr": "8BP7tjqg/QpswrUHiwMomA==",
+        "ENV_tRQPwd": "8BP7tjqg/QpswrUHiwMomA==",
+        "ENV_tRQVirtual": "oklV+QiMfR0lAF3vadbETokcKP/zYuJ3jweT2t2s9lt5qMzWUnHkEPhHPs2sXDu+6IZutzOorg0=",
+        "ENV_tAccess": "3Wi16CeEjmTEV0XkuI8ddu2F4SyiOeK/nht7vUnDR2CY0pQuiqWtzlJzDY2m9ctCMFOVhYy74etdHTY+z8HKUaavmI+gfFyMCefZqkaVgdU=",
+        "ENV_redisIpAddress": ""
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true
+    },
+    "Production": {
+      "commandName": "Project",
+      "launchBrowser": true
+    }
+  }
+}

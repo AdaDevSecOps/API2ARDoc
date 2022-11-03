@@ -1,0 +1,3664 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API2ARDoc</name>
+    </assembly>
+    <members>
+        <member name="M:API2ARDoc.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:API2ARDoc.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:API2ARDoc.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,API2ARDoc.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,API2ARDoc.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:API2ARDoc.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},API2ARDoc.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:API2ARDoc.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:API2ARDoc.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.#ctor(API2ARDoc.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:API2ARDoc.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,API2ARDoc.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:API2ARDoc.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:API2ARDoc.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:API2ARDoc.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:API2ARDoc.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:API2ARDoc.Class.cCacheFunc.C_CAHbExistsKey(System.String)">
+            <summary>
+                Check key in redis.
+            </summary>
+            
+            <param name="ptKey">Key.</param>
+            
+            <returns>
+                true : found.<br/>
+                false : not found.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cCacheFunc.C_CAHxAddKey(System.String,System.Object)">
+            <summary>
+                Add key and value to redis.
+            </summary>
+            
+            <param name="ptKey">Key.</param>
+            <param name="poValue">Value.</param>
+        </member>
+        <member name="M:API2ARDoc.Class.cCacheFunc.C_CAHoGetKey``1(System.String)">
+            <summary>
+                Get key and value from redis.
+            </summary>
+            
+            <typeparam name="T">Class of value.</typeparam>
+            <param name="ptKey">key.</param>
+            
+            <returns>
+                Value of key in type T.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cCacheFunc.C_CAHxDeleteAllKeyByPattern(System.String)">
+            <summary>
+                Delete all key and value in pattern key.
+            </summary>
+            
+            <param name="ptKey">Key.</param>
+        </member>
+        <member name="M:API2ARDoc.Class.cDatabase.#ctor(System.Int32,System.Int32)">
+            <summary>
+                Constructor
+            </summary>
+            
+            <param name="pnConTme">Connection time out.</param>
+        </member>
+        <member name="M:API2ARDoc.Class.cDatabase.C_CONoDatabase">
+            <summary>
+            SqlConnection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cDatabase.C_DATnExecuteSql(System.String,System.Int32)">
+            <summary>
+                Execute sql command insert, update, delete etc.
+            </summary>
+            
+            <param name="ptSqlCmd">Sql command.</param>
+            <param name="pnCmdTme">Execute command time out.</param>
+            
+            <returns>
+                Row effect of command.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cDatabase.C_DATaSqlQuery``1(System.String,System.Int32)">
+            <summary>
+                Query sql command.
+            </summary>
+            
+            <typeparam name="T">Type return.</typeparam>
+            <param name="ptSqlCmd">Sql command.</param>
+            <param name="pnCmdTme">Execute command time out.</param>
+            
+            <returns>
+                Result of sql command in list of class model.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cDatabase.C_DAToSqlQuery``1(System.String,System.Int32)">
+            <summary>
+                Query sql command.
+            </summary>
+            
+            <typeparam name="T">Type return.</typeparam>
+            <param name="ptSqlCmd">Sql command.</param>
+            <param name="pnCmdTme">Execute command time out.</param>
+            
+            <returns>
+                Result of sql command in class model.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cDatabase.C_DAToSqlQuery(System.String,System.Int32,System.String)">
+            <summary>
+                Query sql command.
+            </summary>
+            
+            <param name="ptSqlCmd">Sql command.</param>
+            <param name="pnCmdTme">Execute command time out.</param>
+            <param name="ptTblName">Table name.</param>
+            
+            <returns>
+                Result of sql command in DataTable.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cDatabase.C_GETtSQLScalarString(System.String)">
+            <summary>
+            Query get data type string
+            </summary>
+            <param name="ptSql"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cRabbitMQ.C_GETbLoadConfigMQ">
+            <summary>
+            Get config RabbitMQ
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cRabbitMQ.C_PRCbSendData2Srv(System.String,System.String)">
+            <summary>
+            Send Message to Server RabbitMQ
+            </summary>
+            <param name="ptMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.cRabbitMQ.C_CRTtMsgDataUpload(System.String,System.String)">
+            <summary>
+            Create Message queue
+            </summary>
+            <param name="ptDataUpld">Json data</param>
+            <param name="ptConnStr">Connection String</param>
+            <returns>
+            ข้อความ JSon
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:API2ARDoc.Class.Online.cOnline.C_CHKbOnline(System.String@,System.String@)" -->
+        <member name="M:API2ARDoc.Class.Online.cOnline.C_DATbVerifyIsOnline(System.Collections.Generic.List{API2ARDoc.Models.Database.cmlTSysConfig},System.String@,System.String@,API2ARDoc.Models.WebService.cmlResIsOnline@)">
+            <summary>
+            ตรวจสอบสถานะ Online
+            </summary>
+            <param name="paoSysConfig"></param>
+            <param name="ptErrCode"></param>
+            <param name="ptErrDesc"></param>
+            <param name="poIsOnlineErr"></param>
+            <returns></returns>
+        </member>
+        <member name="F:API2ARDoc.Class.Standard.cCS.tCS_APIVer">
+            <summary>
+            // Version Main API.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_DATxGetConfigurationFromMem``1(``0@,``0,System.Collections.Generic.List{API2ARDoc.Models.Database.cmlTSysConfig},System.String)">
+            <summary>
+                Get configuration from memory.
+            </summary>
+            
+            <typeparam name="T">Type data user value.</typeparam>
+            <param name="poUsrValue">ref Data user value.</param>
+            <param name="poDefValue">Default data user value.</param>
+            <param name="paoSysConfig">Valiable TSysConfig in memory.</param>
+            <param name="ptSysSeq">Sequence.</param>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_CHKbKeyApi(System.String@,System.Collections.Generic.List{API2ARDoc.Models.Database.cmlTSysConfig},System.Web.HttpContext)">
+            <summary>
+                Check key API.
+            </summary>
+            
+            <param name="ptKeyApi">ref Key API.</param>
+            <param name="ptFuncName">Function name.</param>
+            <param name="poHttpContext">HttpContext.</param>
+            
+            <returns>
+                true : Verify key API pass.
+                false : Verify key API false.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_CHKbParaModel(System.String@,System.Web.Http.ModelBinding.ModelStateDictionary)">
+            <summary>
+                Validate model.
+            </summary>
+            
+            <param name="ptModelErr">ref Error message.</param>
+            <param name="poModelState">Parameter model.</param>
+            
+            <returns>
+                true : validate pass.<br/>
+                false : validate false.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_SYSaLoadConfiguration">
+            <summary>
+                Load configuration.
+            </summary>
+            
+            <returns>
+                Configuration.
+            </returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_DATtTripleDESDecryptData(System.String,System.String)">
+            <summary>
+            *Arm 63-06-01
+            </summary>
+            <param name="ptEncryptedData"></param>
+            <param name="ptKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_DATaSHA1EncryptData(System.String,System.Int32)">
+            <summary>
+            *Arm 63-06-01
+            </summary>
+            <param name="ptPlaintext"></param>
+            <param name="pnHashSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_GETtTARTSoHD(API2ARDoc.Models.cmlReqData)">
+            <summary>
+            ดึงขึ้นมูลจากตาราง TARTSoHD โดย Where ด้วยข้อมูลจาก poReq
+            </summary>
+            <param name="poReq"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_GETtTARTSoDT(API2ARDoc.Models.cmlReqData)">
+            <summary>
+            ดึงขึ้นมูลจากตาราง TARTSoDT โดย Where ด้วยข้อมูลจาก poReq
+            </summary>
+            <param name="poReq"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_GETtTARTSoHDCst(API2ARDoc.Models.cmlReqData)">
+            <summary>
+            ดึงขึ้นมูลจากตาราง TARTSoHDCst โดย Where ด้วยข้อมูลจาก poReq
+            </summary>
+            <param name="poReq"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_GETtTARTSoHDDis(API2ARDoc.Models.cmlReqData)">
+            <summary>
+            ดึงขึ้นมูลจากตาราง TARTSoHDDis โดย Where ด้วยข้อมูลจาก poReq
+            </summary>
+            <param name="poReq"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_GETtTARTSoDTDis(API2ARDoc.Models.cmlReqData)">
+            <summary>
+            ดึงขึ้นมูลจากตาราง TARTSoDTDis โดย Where ด้วยข้อมูลจาก poReq
+            </summary>
+            <param name="poReq"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Class.Standard.cSP.SP_CHKbKeyApi(System.Web.HttpContext,System.String@)">
+            <summary>
+            Check API Key 
+            </summary>
+            <param name="poHttpContext"></param>
+            <param name="ptErrAPI"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API2ARDoc.Controllers.cCheckAccessController">
+            <summary>
+            Information Class online
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cCheckAccessController.POST_CHKoIsOnline">
+             <summary>
+             Function check online 
+             </summary>
+             <returns>
+             System process status.<br/>
+            &#8195;     1   : success.<br/>    
+            &#8195;     900 : service process false.<br/>
+            &#8195;     904 : key not allowed to use method.<br/>
+            &#8195;     905 : cannot connect database.<br/>
+             </returns>
+        </member>
+        <member name="T:API2ARDoc.Controllers.cCheckOnlineController">
+            <summary>
+            Information Class online
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cCheckOnlineController.GET_CHKoIsOnline">
+             <summary>
+             Is online ตรวจสอบ connection
+             </summary>
+             <returns>
+             System process status.<br/>
+            &#8195;     1   : success.<br/>    
+            &#8195;     900 : service process false.<br/>
+            &#8195;     905 : cannot connect database.<br/>
+            &#8195;     906 : this time not allowed to use method.<br/>
+             </returns>
+        </member>
+        <member name="T:API2ARDoc.Controllers.cDownloadSaleController">
+            <summary>
+                Download Sale.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cDownloadSaleController.POST_DWNoDownloadSale(API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn)">
+             <summary>
+             Download Sale : ดาวน์โหลดข้อมูลเอกสารการขาย
+             </summary>
+             <param name="poPara"></param>
+             <returns>
+            &#8195;     001 : Success.<br/>
+            &#8195;     701 : Validate parameter model false.<br/>
+            &#8195;     800 : Data not found.<br/>
+            &#8195;     900 : Service process false.<br/>
+            &#8195;     904 : Key not allowed to use method.<br/>
+            &#8195;     905 : Cannot connect database.<br/>
+             </returns>
+        </member>
+        <member name="T:API2ARDoc.Controllers.cPdtStockTransferController">
+            <summary>
+                Download ใบโอนสินค้าระหว่างคลัง
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cPdtStockTransferController.POST_DWNoPdtStockTransefer(API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqPdtTwxDwn)">
+            <summary>
+            Download ใบโอนสินค้าระหว่างคลัง
+            </summary>
+            <param name="poParam">รหัสสาขา</param>
+             <returns>
+            &#8195;     001 : Success.<br/>
+            &#8195;     700 : all parameter is null.<br/>
+            &#8195;     701 : Validate parameter model false.<br/>
+            &#8195;     800 : Data not found.<br/>
+            &#8195;     900 : Service process false.<br/>
+            &#8195;     904 : Key not allowed to use method.<br/>
+            &#8195;     905 : Cannot connect database.<br/>
+             </returns>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cPdtStockTransferController.POST_DWNoManualPdtStkTfnDwn(API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqManualPdtTwxDwn)">
+            <summary>
+            Download ใบโอนสินค้าระหว่างคลัง (Manual)
+            </summary>
+            <param name="poParam">รหัสสาขา</param>
+             <returns>
+            &#8195;     001 : Success.<br/>
+            &#8195;     700 : all parameter is null.<br/>
+            &#8195;     701 : Validate parameter model false.<br/>
+            &#8195;     800 : Data not found.<br/>
+            &#8195;     900 : Service process false.<br/>
+            &#8195;     904 : Key not allowed to use method.<br/>
+            &#8195;     905 : Cannot connect database.<br/>
+             </returns>
+        </member>
+        <member name="T:API2ARDoc.Controllers.cSaleDocReferController">
+            <summary>
+                Download Sale Document Refer.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cSaleDocReferController.POST_DWNoDownloadSale(API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn)">
+             <summary>
+             Download Sale : ดาวน์โหลดข้อมูลเอกสารการขาย
+             </summary>
+             <param name="poPara"></param>
+             <returns>
+            &#8195;     001 : Success.<br/>
+            &#8195;     701 : Validate parameter model false.<br/>
+            &#8195;     800 : Data not found.<br/>
+            &#8195;     900 : Service process false.<br/>
+            &#8195;     904 : Key not allowed to use method.<br/>
+            &#8195;     905 : Cannot connect database.<br/>
+             </returns>
+        </member>
+        <member name="T:API2ARDoc.Controllers.cSaleOrderController">
+            <summary>
+            Infomation Sale Order
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cSaleOrderController.POST_ORDoOrdersByList(API2ARDoc.Models.Webservice.Request.SaleOrder.cmlReqOrdersByList)">
+            <summary>
+            Process Get Sale Order By List
+            </summary>
+            <param name="poPara"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cSaleOrderController.POST_ORDoOrdersByDoc(API2ARDoc.Models.Webservice.Request.SaleOrder.cmlReqOrdersByDoc)">
+            <summary>
+            Process Get Sale Order By Doc
+            </summary>
+            <param name="poPara"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API2ARDoc.Controllers.cUpdSaleReferController">
+            <summary>
+                Update Sale Refer.
+            </summary>
+        </member>
+        <member name="M:API2ARDoc.Controllers.cUpdSaleReferController.POST_UPDoUpdSaleRefer(API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqUpdSaleRefer)">
+             <summary>
+             อัพโหลดข้อมูลเอกสารการขาย
+             </summary>
+             <param name="poPara"></param>
+             <returns>
+            &#8195;     001 : Success.<br/>
+            &#8195;     701 : Validate parameter model false.<br/>
+            &#8195;     800 : Data not found.<br/>
+            &#8195;     900 : Service process false.<br/>
+            &#8195;     904 : Key not allowed to use method.<br/>
+            &#8195;     905 : Cannot connect database.<br/>
+             </returns>
+        </member>
+        <member name="T:API2ARDoc.Models.cmlRcvDataUpload">
+            <summary>
+            Class Send data to RabbitMQ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlRcvDataUpload.ptData">
+            <summary>
+            Json data
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlRcvDataUpload.ptConnStr">
+            <summary>
+            Connection string
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTBchCode">
+            <summary>สาขาสร้าง</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXshDocNo">
+            <summary>เลขที่เอกสาร</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FNXsdSeqNo">
+            <summary>ลำดับ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTPdtCode">
+            <summary>รหัสสินค้า</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdPdtName">
+            <summary>ชื่อสินค้า</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTPunCode">
+            <summary>รหัสหน่วย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTPunName">
+            <summary>ชื่อหน่วยสินค้า</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdFactor">
+            <summary>อัตราส่วนต่อหน่วย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdBarCode">
+            <summary>บาร์โค้ด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTSrnCode">
+            <summary>รหัส ซีเรียล</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdVatType">
+            <summary>ประเภทภาษี 1:มีภาษี, 2:ไม่มีภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTVatCode">
+            <summary>รหัสภาษี ณ. ซื้อ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdVatRate">
+            <summary>อัตราภาษี ณ. ซื้อ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdSaleType">
+            <summary>ใช้ราคาขาย 1:บังคับ, 2:แก้ไข, 3:เครื่องชั่ง,4: นน.</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdSalePrice">
+            <summary>จากราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน(HD.FCXphRteFac)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdQty">
+            <summary>จำนวนชื้น ตาม หน่วย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdQtyAll">
+            <summary>จำนวนรวมหน่วยเล็กสุด (FCXpdQty*FCXpdFactor)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdSetPrice">
+            <summary>ราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน(HD.FCXphRteFac)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdAmtB4DisChg">
+            <summary>มูลค่ารวมก่อนลด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdDisChgTxt">
+            <summary>ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdDis">
+            <summary>มูลค่ารวมส่วนลด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdChg">
+            <summary>มูลค่ารวมส่วนชาร์จ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdNet">
+            <summary>มูลค่าสุทธิก่อนท้ายบิล (FCXpdAmt-FCXpdDis+FCXpdChg)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdNetAfHD">
+            <summary>มูลค่าสุทธิหลังท้ายบิล (Net-SUM(Disท้ายบิล))</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdVat">
+            <summary>มูลค่าภาษี IN: NetAfHD-((NetAfHD*100)/(100+VatRate)) ,EX: ((NetAfHD*(100+VatRate))/100)-NetAfHD</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdVatable">
+            <summary>มูลค่าแยกภาษี (NetAfHD-FCXpdVat)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdWhtAmt">
+            <summary>มูลค่าภาษี ณ. ที่จ่าย (FCXpdVatable* FCXpdWhtRate%)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdWhtCode">
+            <summary>รหัส ภาษี ณ. ที่จ่าย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdWhtRate">
+            <summary>อัตราภาษี ณ. ที่จ่าย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdCostIn">
+            <summary>ต้นทุนรวมใน (FCXpdVat+FCXpdVatable)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdCostEx">
+            <summary>ต้นทุนแยกนอก (FCXpdVatable)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdStaPdt">
+            <summary>สถานะ สินค้า 1:ขาย, 2:คืน, 3:แถม, 4: ยกเลิก (Void)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdQtyLef">
+            <summary>จำนวนคงเหลือ ตามหน่วย (Default:FCXpdQty)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdQtyRfn">
+            <summary>จำนวนคืนตามหน่วย (Default:0)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdStaPrcStk">
+            <summary>สถานะตัดสต๊อก ว่าง:ยังไม่ทำ, 1:ทำแล้ว</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdStaAlwDis">
+            <summary>สถานะอนุญาต ลด/ชาร์จ  1:อนุญาต , 2:ไม่อนุญาต</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FNXsdPdtLevel">
+            <summary>ระดับสิน(ค้าชุด)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdPdtParent">
+            <summary>รหัสสินค้าชุด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FCXsdQtySet">
+            <summary>จำนวนต่อชุด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTPdtStaSet">
+            <summary>สถานะ สินค้าชุด 1:ทั่วไป, 2:สินค้าประกอบ, 3:สินค้าชุด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTXsdRmk">
+            <summary>หมายเหตุรายการ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FDLastUpdOn">
+            <summary>วันที่ปรับปรุงรายการล่าสุด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTLastUpdBy">
+            <summary>ผู้ปรับปรุงรายการล่าสุด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FDCreateOn">
+            <summary>วันที่สร้างรายการ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDT.FTCreateBy">
+            <summary>ผู้สร้างรายการ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FTBchCode">
+            <summary>สาขาสร้าง</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FTXshDocNo">
+            <summary>เลขที่เอกสาร</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FNXsdSeqNo">
+            <summary>ลำดับ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FDXddDateIns">
+            <summary>วัน/เวลาทำรายการ [dd/mm/yyyy H:mm:ss]</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FNXddStaDis">
+            <summary>สถานะส่วนลด 1: ลดรายการ ,2: ลดท้ายบิล</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FTXddDisChgTxt">
+            <summary>ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FTXddDisChgType">
+            <summary>ประเภทลดชาร์จ 1:ลดบาท 2: ลด % 3: ชาร์จบาท 4: ชาร์จ %</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FCXddNet">
+            <summary>มูลค่าสุทธิก่อนลดชาร์จ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoDTDis.FCXddValue">
+            <summary>ยอดลด/ชาร์จ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTBchCode">
+            <summary>สาขาสร้าง</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshDocNo">
+            <summary>เลขที่เอกสาร  Def : XYYPOS-1234567 Gen ตาม TCNTAuto</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTShpCode">
+            <summary>ร้านค้า</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FNXshDocType">
+            <summary>ประเภทเอกสาร ดูจาก ตาราง TSysDocType</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FDXshDocDate">
+            <summary>วันที่/เวลา เอกสาร dd/mm/yyyy H:mm:ss</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshCshOrCrd">
+            <summary>สด/เครดิต 1:สด 2:credit</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshVATInOrEx">
+            <summary>ภาษีมูลค่าเพิ่ม 1:รวมใน, 2:แยกนอก</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTDptCode">
+            <summary>แผนก</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTWahCode">
+            <summary>คลัง</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTPosCode">
+            <summary>เครื่องจุดขาย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTShfCode">
+            <summary>รอบ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FNSdtSeqNo">
+            <summary>ลำดับการ SignIn DT</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTUsrCode">
+            <summary>พนักงาน Key</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTSpnCode">
+            <summary>พนักงานขาย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshApvCode">
+            <summary>ผู้อนุมัติ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTCstCode">
+            <summary>ลูกค้า</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshDocVatFull">
+            <summary>เลขที่ใบกำกับ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshRefExt">
+            <summary>อ้างอิง เลขที่เอกสาร ภายนอก</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FDXshRefExtDate">
+            <summary>อ้างอิง วันที่เอกสาร ภายนอก</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshRefInt">
+            <summary>อ้างอิง เลขที่เอกสาร ภายใน</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FDXshRefIntDate">
+            <summary>อ้างอิง วันที่เอกสาร ภายใน</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshRefAE">
+            <summary>อ้างถึงเอกสาร มัดจำ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FNXshDocPrint">
+            <summary>จำนวนครั้งที่พิมพ์</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTRteCode">
+            <summary>รหัสสกุลเงิน</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshRteFac">
+            <summary>อัตราแลกเปลี่ยน</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshTotal">
+            <summary>ยอดรวม</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshTotalNV">
+            <summary>ยอดรวมสินค้าไม่มีภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshTotalNoDis">
+            <summary>ยอดรวมสินค้าห้ามลด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshTotalB4DisChgV">
+            <summary>ยอมรวมสินค้าลดได้ และมีภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshTotalB4DisChgNV">
+            <summary>ยอมรวมสินค้าลดได้ และไม่มีภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshDisChgTxt">
+            <summary>ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshDis">
+            <summary>มูลค่ารวมส่วนลด SUM(HDis.FCXddDisVat+HDis.FCXddDisNoVat)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshChg">
+            <summary>มูลค่ารวมส่วนชาร์จ SUM(HDis.FCXddChgVat+HDis.FCXddChgNoVat)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshTotalAfDisChgV">
+            <summary>ยอดรวมหลังลด และมีภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshTotalAfDisChgNV">
+            <summary>ยอดรวมหลังลด และไม่มีภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshRefAEAmt">
+            <summary>ยอดมัดจำ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshAmtV">
+            <summary>ยอดรวมเฉพาะภาษี (FCXshTotal-FCXshTotalNV-(FCXshTotalB4DisChgV-FCXshTotalAfDisChgV))</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshAmtNV">
+            <summary>ยอดรวมเฉพาะไม่มีภาษี (FCXshTotalNV-(FCXshTotalB4DisChgNV-FCXshTotalAfDisChgNV))</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshVat">
+            <summary>ยอดภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshVatable">
+            <summary>ยอดแยกภาษี (FCXshAmtV-FCXshVat)+FCXshAmt์NV</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshWpCode">
+            <summary>รหัสอัตราภาษี ณ ที่จ่าย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshWpTax">
+            <summary>ภาษีหัก ณ ที่จ่าย SUM(FCXpdWhtAmt)  /Key In</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshGrand">
+            <summary>ยอดรวม FCXshAmtV+FCXshAmtNV+FCXshRnd</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshRnd">
+            <summary>ยอดปัดเศษ (เมื่อชำระด้วยเงินสดเฉพาะขายปลีก)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshGndText">
+            <summary>ข้อความ ยอดรวมสุทธิ(FCXphGrand)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshPaid">
+            <summary>ยอดจ่าย</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FCXshLeft">
+            <summary>ยอดค้าง Default: 0</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshRmk">
+            <summary>หมายเหตุ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshStaRefund">
+            <summary>สถานะ การคืน 1:ไม่เคยคืน, 2:เคยคืน</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshStaDoc">
+            <summary>สถานะ เอกสาร  1:สมบูรณ์, 2:ไม่สมบูรณ์, 3:ยกเลิก</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshStaApv">
+            <summary>สถานะ อนุมัติ เอกสาร ว่าง:ยังไม่ทำ, 1:อนุมัติแล้ว</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshStaPrcDoc">
+            <summary>สถานะอนุมัติ 1: อนุมัติแล้ว  ว่าง null ยังไม่อนุมัติ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTXshStaPaid">
+            <summary>สถานะ รับ/จ่ายเงิน 1:ยังไม่จ่าย 2:บางส่วน, 3:ครบ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FNXshStaDocAct">
+            <summary>สถานะ เคลื่อนไหว 0:NonActive, 1:Active</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FNXshStaRef">
+            <summary>สถานะ อ้างอิง 0:ไม่เคยอ้างอิง, 1:อ้างอิงบางส่วน, 2:อ้างอิงหมดแล้ว</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FDLastUpdOn">
+            <summary>วันที่ปรับปรุงรายการล่าสุด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTLastUpdBy">
+            <summary>ผู้ปรับปรุงรายการล่าสุด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FDCreateOn">
+            <summary>วันที่สร้างรายการ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHD.FTCreateBy">
+            <summary>ผู้สร้างรายการ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FTBchCode">
+            <summary>สาขาสร้าง</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FTXshDocNo">
+            <summary>เลขที่เอกสาร</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FTXshCardID">
+            <summary>เลขที่บัตรประจำตัวประชาชน/Passport</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FTXshCardNo">
+            <summary>เลขบัตรสมาชิก</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FNXshCrTerm">
+            <summary>ระยะเครดิต</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FDXshDueDate">
+            <summary>วันที่ครบกำหนด</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FDXshBillDue">
+            <summary>วันที่จะรับ/วางบิล</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FTXshCtrName">
+            <summary>ชื่อผู้ตืดต่อ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FDXshTnfDate">
+            <summary>วันที่ส่งของ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FTXshRefTnfID">
+            <summary>เลขที่ ใบขนส่ง</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FNXshAddrShip">
+            <summary>ที่อยู่ส่งของ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDCst.FNXshAddrTax">
+            <summary>ที่อยู่ใบกำกับภาษี</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FTBchCode">
+            <summary>สาขาสร้าง</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FTXshDocNo">
+            <summary>เลขที่เอกสาร</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FDXhdDateIns">
+            <summary>วัน/เวลาทำรายการ [dd/mm/yyyy H:mm:ss]</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FTXhdDisChgTxt">
+            <summary>ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FTXhdDisChgType">
+            <summary>ประเภทลดชาร์จ 1:ลดบาท 2: ลด % 3: ชาร์จบาท 4: ชาร์จ %</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FCXhdTotalAfDisChg">
+            <summary>ยอดรวมหลังลด (FCXshTotalAfDisChgV+FCXshTotalAfDisChgNV)</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FCXhdDisChg">
+            <summary>ยอดลด/ชาร์จ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.cmlResSoHDDis.FCXhdAmt">
+            <summary>มูลค่าลด/ชาร์จ</summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Database.cmlTSysConfig.FTSysCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Database.cmlTSysConfig.FTSysSeq">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Database.cmlTSysConfig.FTSysUsrValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Database.cmlTSysConfig.FTSysUsrRef">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqPdtTwxDwn.ptBchCode">
+            <summary>
+            รหัสสาขา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqPdtTwxDwn.ptDocNo">
+            <summary>
+            เลขที่เอกสารใบโอนสินค้าระหว่างคลัง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqManualPdtTwxDwn.ptBchCode">
+            <summary>
+            รหัสสาขา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqManualPdtTwxDwn.ptWahCode">
+            <summary>
+            รหัสคลัง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqManualPdtTwxDwn.ptDocNo">
+            <summary>
+            List เลขที่เอกสารใบโอนสินค้าระหว่างคลังที่มีในเครื่องตามวันที่ที่ต้องการมา Fromat : 'DocNo1','DocNo2',...
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.PdtStockTransfer.cmlReqManualPdtTwxDwn.pdDate">
+            <summary>
+            วันที่
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn.ptBchCode">
+            <summary>
+            รหัสสาขา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn.ptDocNo">
+            <summary>
+            เลขที่เอกสาร
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn.pdSaleDate">
+            <summary>
+            วันที่
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn.pnDoctype">
+            <summary>
+            ประเภท
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn.ptMerCode">
+            <summary>
+            รหัสตัวแทน/เจ้าของกำเนินการ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqSaleDwn.ptAgnCode">
+            <summary>
+            รหัสคู้ค้า/AD
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqUpdSaleRefer.ptBchCode">
+            <summary>
+            รหัสสาขา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqUpdSaleRefer.ptRefBchCode">
+            <summary>
+            รหัสสาขาของเลขที่เอกสารอ้างอิง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqUpdSaleRefer.ptDocNo">
+            <summary>
+            เลขที่เอกสาร
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqUpdSaleRefer.ptRefDocNo">
+            <summary>
+            เลขที่เอกสารอ้างอิง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqUpdSaleRefer.pnSaleType">
+            <summary>
+            ประเภทการขาย
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleDocRefer.cmlReqUpdSaleRefer.pnOptionRfn">
+            <summary>
+            option การคืน
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleOrder.cmlReqOrdersByDoc.ptBchCode">
+            <summary>
+            รหัสสาขา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleOrder.cmlReqOrdersByDoc.ptDocNo">
+            <summary>
+            เลขที่เอกสาร SO
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleOrder.cmlReqOrdersByList.ptBchCode">
+            <summary>
+            รหัสสาขา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Request.SaleOrder.cmlReqOrdersByList.ptCstCode">
+            <summary>
+            รหัสลูกค้า
+            </summary>
+        </member>
+        <member name="F:API2ARDoc.Models.Webservice.Response.Base.cmlResList`1.rnCurrentPage">
+            <summary>
+            Current page.
+            </summary>
+        </member>
+        <member name="F:API2ARDoc.Models.Webservice.Response.Base.cmlResList`1.rnAllPage">
+            <summary>
+            All pages.
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXthDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rnXtdSeqNo">
+             <summary>
+            ลำดับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtPdtCode">
+             <summary>
+            รหัสสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXtdPdtName">
+             <summary>
+            ชื่อสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtPunCode">
+             <summary>
+            รหัสหน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtPunName">
+             <summary>
+            ชื่อหน่วยสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdFactor">
+             <summary>
+            อัตราส่วนต่อหน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXtdBarCode">
+             <summary>
+            บาร์โค้ด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXtdVatType">
+             <summary>
+            ประเภทภาษี 1:มีภาษี, 2:ไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtVatCode">
+             <summary>
+            รหัสภาษี ณ. ซื้อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdVatRate">
+             <summary>
+            อัตราภาษี ณ. ซื้อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdQty">
+             <summary>
+            จำนวนชื้น ตาม หน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdQtyAll">
+             <summary>
+            จำนวนรวมหน่วยเล็กสุด (FCXpdQty*FCXpdFactor)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdSetPrice">
+             <summary>
+            ราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน(HD.FCXphRteFac)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdAmt">
+             <summary>
+            มูลค่ารวมก่อนลด (Qty*SetPrice) ทุกกรณี (ไม่เปลี่ยน)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdVat">
+             <summary>
+            มูลค่าภาษี IN: Net-((Net*100)/(100+VatRate)) ,EX: ((Net*(100+VatRate))/100)-Net
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdVatable">
+             <summary>
+            มูลค่าแยกภาษี (Net-FCXpdVat)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdNet">
+             <summary>
+            มูลค่าสุทธิก่อนท้ายบิล (FCXpdVat+FCXpdVatable)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdCostIn">
+             <summary>
+            ต้นทุนรวมใน (FCXpdVat+FCXpdVatable)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdCostEx">
+             <summary>
+            ต้นทุนแยกนอก (FCXpdVatable)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXtdStaPrcStk">
+             <summary>
+            สถานะตัดสต๊อก ว่าง:ยังไม่ทำ, 1:ทำแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rnXtdPdtLevel">
+             <summary>
+            ระดับสิน(ค้าชุด)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXtdPdtParent">
+             <summary>
+            รหัสสินค้าชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rcXtdQtySet">
+             <summary>
+            จำนวนต่อชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXtdPdtStaSet">
+             <summary>
+            สถานะ สินค้าชุด 1:ทั่วไป, 2:สินค้าประกอบ, 3:สินค้าชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtXtdRmk">
+             <summary>
+            หมายเหตุรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxDT.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthDocNo">
+             <summary>
+            เลขที่เอกสาร  XXYYMM-1234567
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rdXthDocDate">
+             <summary>
+            วันที่/เวลา เอกสาร dd/mm/yyyy H:mm:ss
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthVATInOrEx">
+             <summary>
+            ภาษีมูลค่าเพิ่ม 1:รวมใน, 2:แยกนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtDptCode">
+             <summary>
+            แผนก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthMerCode">
+             <summary>
+            รหัสตัวแทน/เจ้าของกำเนินการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthShopFrm">
+             <summary>
+            ร้านค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthShopTo">
+             <summary>
+            ร้านค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthWhFrm">
+             <summary>
+            รหัสคลัง จาก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthWhTo">
+             <summary>
+            รหัสคลัง ไปยัง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthPosFrm">
+             <summary>
+            รหัสเครื่องจุดขาย จาก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthPosTo">
+             <summary>
+            รหัสเครื่องจุดขาย ไปยัง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtUsrCode">
+             <summary>
+            พนักงาน Key
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtSpnCode">
+             <summary>
+            พนักงานขาย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthApvCode">
+             <summary>
+            ผู้อนุมัติ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthRefExt">
+             <summary>
+            อ้างอิง เลขที่เอกสาร ภายนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rdXthRefExtDate">
+             <summary>
+            อ้างอิง วันที่เอกสาร ภายนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthRefInt">
+             <summary>
+            อ้างอิง เลขที่เอกสาร ภายใน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rdXthRefIntDate">
+             <summary>
+            อ้างอิง วันที่เอกสาร ภายใน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rnXthDocPrint">
+             <summary>
+            จำนวนครั้งที่พิมพ์
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rcXthTotal">
+             <summary>
+            ยอดรวมก่อนลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rcXthVat">
+             <summary>
+            ยอดภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rcXthVatable">
+             <summary>
+            ยอดแยกภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthRmk">
+             <summary>
+            หมายเหตุ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthStaDoc">
+             <summary>
+            สถานะ เอกสาร  1:สมบูรณ์, 2:ไม่สมบูรณ์, 3:ยกเลิก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthStaApv">
+             <summary>
+            สถานะ อนุมัติ เอกสาร ว่าง:ยังไม่ทำ, 1:อนุมัติแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthStaPrcStk">
+             <summary>
+            สถานะ ประมวลผลสต๊อก ว่าง หรือ Null:ยังไม่ทำ, 1:ทำแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtXthStaDelMQ">
+             <summary>
+            สถานะ ประมวลผลสต๊อก ว่าง :ยังไม่ทำ, 1:ทำแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rnXthStaDocAct">
+             <summary>
+            สถานะ เคลื่อนไหว 0:NonActive, 1:Active
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rnXthStaRef">
+             <summary>
+            สถานะ อ้างอิง 0:ไม่เคยอ้างอิง, 1:อ้างอิงบางส่วน, 2:อ้างอิงหมดแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtRsnCode">
+             <summary>
+            รหัสเหตุผล
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.PdtStockTransfer.cmlResInfoPdtTwxHD.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rnXsdSeqNo">
+             <summary>
+            ลำดับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtPdtCode">
+             <summary>
+            รหัสสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdPdtName">
+             <summary>
+            ชื่อสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtPunCode">
+             <summary>
+            รหัสหน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtPunName">
+             <summary>
+            ชื่อหน่วยสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtPplCode">
+            <summary>
+            รหัสกลุ่มราคา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdFactor">
+             <summary>
+            อัตราส่วนต่อหน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdBarCode">
+             <summary>
+            บาร์โค้ด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtSrnCode">
+             <summary>
+            รหัส ซีเรียล
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdVatType">
+             <summary>
+            ประเภทภาษี 1:มีภาษี, 2:ไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtVatCode">
+             <summary>
+            รหัสภาษี ณ. ซื้อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdVatRate">
+             <summary>
+            อัตราภาษี ณ. ซื้อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdSaleType">
+             <summary>
+            ใช้ราคาขาย 1:บังคับ, 2:แก้ไข, 3:เครื่องชั่ง,4: นน.
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdSalePrice">
+             <summary>
+            จากราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน(HD.FCXphRteFac)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdQty">
+             <summary>
+            จำนวนชื้น ตาม หน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdQtyAll">
+             <summary>
+            จำนวนรวมหน่วยเล็กสุด (FCXpdQty*FCXpdFactor)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdSetPrice">
+             <summary>
+            ราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน(HD.FCXphRteFac)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdAmtB4DisChg">
+             <summary>
+            มูลค่ารวมก่อนลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdDis">
+             <summary>
+            มูลค่ารวมส่วนลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdChg">
+             <summary>
+            มูลค่ารวมส่วนชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdNet">
+             <summary>
+            มูลค่าสุทธิก่อนท้ายบิล (FCXpdAmt-FCXpdDis+FCXpdChg)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdNetAfHD">
+             <summary>
+            มูลค่าสุทธิหลังท้ายบิล (Net-SUM(Disท้ายบิล))
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdVat">
+             <summary>
+            มูลค่าภาษี IN: NetAfHD-((NetAfHD*100)/(100+VatRate)) ,EX: ((NetAfHD*(100+VatRate))/100)-NetAfHD
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdVatable">
+             <summary>
+            มูลค่าแยกภาษี (NetAfHD-FCXpdVat)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdWhtAmt">
+             <summary>
+            มูลค่าภาษี ณ. ที่จ่าย (FCXpdVatable* FCXpdWhtRate%)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdWhtCode">
+             <summary>
+            รหัส ภาษี ณ. ที่จ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdWhtRate">
+             <summary>
+            อัตราภาษี ณ. ที่จ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdCostIn">
+             <summary>
+            ต้นทุนรวมใน (FCXpdVat+FCXpdVatable)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdCostEx">
+             <summary>
+            ต้นทุนแยกนอก (FCXpdVatable)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdStaPdt">
+             <summary>
+            สถานะ สินค้า 1:ขาย, 2:คืน, 3:แถม, 4: ยกเลิก (Void)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdQtyLef">
+             <summary>
+            จำนวนคงเหลือ ตามหน่วย (Default:FCXpdQty)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdQtyRfn">
+             <summary>
+            จำนวนคืนตามหน่วย (Default:0)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdStaPrcStk">
+             <summary>
+            สถานะตัดสต๊อก ว่าง:ยังไม่ทำ, 1:ทำแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdStaAlwDis">
+             <summary>
+            สถานะอนุญาต ลด/ชาร์จ  1:อนุญาต , 2:ไม่อนุญาต
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rnXsdPdtLevel">
+             <summary>
+            ระดับสิน(ค้าชุด)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdPdtParent">
+             <summary>
+            รหัสสินค้าชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rcXsdQtySet">
+             <summary>
+            จำนวนต่อชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtPdtStaSet">
+             <summary>
+            สถานะ สินค้าชุด 1:ทั่วไป, 2:สินค้าประกอบ, 3:สินค้าชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtXsdRmk">
+             <summary>
+            หมายเหตุรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDT.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rnXsdSeqNo">
+             <summary>
+            ลำดับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rdXddDateIns">
+             <summary>
+            วัน/เวลาทำรายการ [dd/mm/yyyy H:mm:ss]
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rnXddStaDis">
+             <summary>
+            สถานะส่วนลด 1: ลดรายการ ,2: ลดท้ายบิล
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rtXddDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rtXddDisChgType">
+             <summary>
+            ประเภทลดชาร์จ 1:ลดบาท 2: ลด % 3: ชาร์จบาท 4: ชาร์จ %
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rcXddNet">
+             <summary>
+            มูลค่าสุทธิก่อนลดชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rcXddValue">
+             <summary>
+            ยอดลด/ชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rtXddRefCode">
+            <summary>
+            เลขที่อ้างอิง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rtDisCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalDTDis.rtRsnCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร  Def : XYYPOS-1234567 Gen ตาม TCNTAuto
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtShpCode">
+             <summary>
+            ร้านค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rnXshDocType">
+             <summary>
+            ประเภทเอกสาร ดูจาก ตาราง TSysDocType
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rdXshDocDate">
+             <summary>
+            วันที่/เวลา เอกสาร dd/mm/yyyy H:mm:ss
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshCshOrCrd">
+             <summary>
+            สด/เครดิต 1:สด 2:credit
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshVATInOrEx">
+             <summary>
+            ภาษีมูลค่าเพิ่ม 1:รวมใน, 2:แยกนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtDptCode">
+             <summary>
+            แผนก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtWahCode">
+             <summary>
+            คลัง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtPosCode">
+             <summary>
+            เครื่องจุดขาย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtShfCode">
+             <summary>
+            รอบ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rnSdtSeqNo">
+             <summary>
+            ลำดับการ SignIn DT
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtUsrCode">
+             <summary>
+            พนักงาน Key
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtSpnCode">
+             <summary>
+            พนักงานขาย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshApvCode">
+             <summary>
+            ผู้อนุมัติ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtCstCode">
+             <summary>
+            ลูกค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshDocVatFull">
+             <summary>
+            เลขที่ใบกำกับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshRefExt">
+             <summary>
+            อ้างอิง เลขที่เอกสาร ภายนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rdXshRefExtDate">
+             <summary>
+            อ้างอิง วันที่เอกสาร ภายนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshRefInt">
+             <summary>
+            อ้างอิง เลขที่เอกสาร ภายใน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rdXshRefIntDate">
+             <summary>
+            อ้างอิง วันที่เอกสาร ภายใน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshRefAE">
+             <summary>
+            อ้างถึงเอกสาร มัดจำ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rnXshDocPrint">
+             <summary>
+            จำนวนครั้งที่พิมพ์
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtRteCode">
+             <summary>
+            รหัสสกุลเงิน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshRteFac">
+             <summary>
+            อัตราแลกเปลี่ยน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshTotal">
+             <summary>
+            ยอดรวม
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshTotalNV">
+             <summary>
+            ยอดรวมสินค้าไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshTotalNoDis">
+             <summary>
+            ยอดรวมสินค้าห้ามลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshTotalB4DisChgV">
+             <summary>
+            ยอมรวมสินค้าลดได้ และมีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshTotalB4DisChgNV">
+             <summary>
+            ยอมรวมสินค้าลดได้ และไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshDis">
+             <summary>
+            มูลค่ารวมส่วนลด SUM(HDis.FCXddDisVat+HDis.FCXddDisNoVat)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshChg">
+             <summary>
+            มูลค่ารวมส่วนชาร์จ SUM(HDis.FCXddChgVat+HDis.FCXddChgNoVat)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshTotalAfDisChgV">
+             <summary>
+            ยอดรวมหลังลด และมีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshTotalAfDisChgNV">
+             <summary>
+            ยอดรวมหลังลด และไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshRefAEAmt">
+             <summary>
+            ยอดมัดจำ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshAmtV">
+             <summary>
+            ยอดรวมเฉพาะภาษี (FCXshTotal-FCXshTotalNV-(FCXshTotalB4DisChgV-FCXshTotalAfDisChgV))
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshAmtNV">
+             <summary>
+            ยอดรวมเฉพาะไม่มีภาษี (FCXshTotalNV-(FCXshTotalB4DisChgNV-FCXshTotalAfDisChgNV))
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshVat">
+             <summary>
+            ยอดภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshVatable">
+             <summary>
+            ยอดแยกภาษี (FCXshAmtV-FCXshVat)+FCXshAmt์NV
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshWpCode">
+             <summary>
+            รหัสอัตราภาษี ณ ที่จ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshWpTax">
+             <summary>
+            ภาษีหัก ณ ที่จ่าย SUM(FCXpdWhtAmt)  /Key In
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshGrand">
+             <summary>
+            ยอดรวม FCXshAmtV+FCXshAmtNV+FCXshRnd
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshRnd">
+             <summary>
+            ยอดปัดเศษ (เมื่อชำระด้วยเงินสดเฉพาะขายปลีก)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshGndText">
+             <summary>
+            ข้อความ ยอดรวมสุทธิ(FCXphGrand)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshPaid">
+             <summary>
+            ยอดจ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rcXshLeft">
+             <summary>
+            ยอดค้าง Default: 0
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshRmk">
+             <summary>
+            หมายเหตุ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshStaRefund">
+             <summary>
+            สถานะ การคืน 1:ไม่เคยคืน, 2:เคยคืน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshStaDoc">
+             <summary>
+            สถานะ เอกสาร  1:สมบูรณ์, 2:ไม่สมบูรณ์, 3:ยกเลิก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshStaApv">
+             <summary>
+            สถานะ อนุมัติ เอกสาร ว่าง:ยังไม่ทำ, 1:อนุมัติแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshStaPrcStk">
+             <summary>
+            สถานะ ประมวลผลสต๊อก ว่าง หรือ Null:ยังไม่ทำ, 1:ทำแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtXshStaPaid">
+             <summary>
+            สถานะ รับ/จ่ายเงิน 1:ยังไม่จ่าย 2:บางส่วน, 3:ครบ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rnXshStaDocAct">
+             <summary>
+            สถานะ เคลื่อนไหว 0:NonActive, 1:Active
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rnXshStaRef">
+             <summary>
+            สถานะ อ้างอิง 0:ไม่เคยอ้างอิง, 1:อ้างอิงบางส่วน, 2:อ้างอิงหมดแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtChnCode">
+             <summary>
+            รหัสช่องทางการจำหน่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHD.rtAppCode">
+             <summary>
+            รหัส AppCode
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtXshCardID">
+             <summary>
+            เลขที่บัตรประจำตัวประชาชน/Passport
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtXshCardNo">
+             <summary>
+            เลขบัตรสมาชิก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rnXshCrTerm">
+             <summary>
+            ระยะเครดิต
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rdXshDueDate">
+             <summary>
+            วันที่ครบกำหนด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rdXshBillDue">
+             <summary>
+            วันที่จะรับ/วางบิล
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtXshCtrName">
+             <summary>
+            ชื่อผู้ตืดต่อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rdXshTnfDate">
+             <summary>
+            วันที่ส่งของ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtXshRefTnfID">
+             <summary>
+            เลขที่ ใบขนส่ง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rnXshAddrShip">
+             <summary>
+            ที่อยู่ส่งของ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rnXshAddrTax">
+             <summary>
+            ที่อยู่ใบกำกับภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtXshCstName">
+             <summary>
+            ชื่อผู้ตืดต่อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rtXshCstTel">
+            <summary>
+            เบอร์โทรลูกค้า
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rcXshCstPnt">
+            <summary>
+            แต้มที่ได้รับจากบิล
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDCst.rcXshCstPntPmt">
+            <summary>
+            แต้มที่ได้รับจาก Promotion
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rdXhdDateIns">
+             <summary>
+            วัน/เวลาทำรายการ [dd/mm/yyyy H:mm:ss]
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rtXhdDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rtXhdDisChgType">
+             <summary>
+            ประเภทลดชาร์จ 1:ลดบาท 2: ลด % 3: ชาร์จบาท 4: ชาร์จ %
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rcXhdTotalAfDisChg">
+             <summary>
+            ยอดรวมหลังลด (FCXshTotalAfDisChgV+FCXshTotalAfDisChgNV)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rcXhdDisChg">
+             <summary>
+            ยอดลด/ชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rcXhdAmt">
+             <summary>
+            มูลค่าลด/ชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rtXhdRefCode">
+            <summary>
+            เลขที่อ้างอิง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rtDisCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalHDDis.rtRsnCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtBchCode">
+            <summary>
+            สาขาสร้าง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtXshDocNo">
+            <summary>
+            เลขที่เอกสาร
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtPmhDocNo">
+            <summary>
+            รหัสโปรโมชั่น
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rnXsdSeqNo">
+            <summary>
+            ลำดับ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtPmdGrpName">
+            <summary>
+            ชื่อกลุ่มจัดรายการ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtPdtCode">
+            <summary>
+            รหัสสินค้า
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtPunCode">
+            <summary>
+            รหัสหน่วย
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXsdQty">
+            <summary>
+            จำนวนชื้น ตาม หน่วย
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXsdQtyAll">
+            <summary>
+            จำนวนรวมหน่วย
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXsdSetPrice">
+            <summary>
+            ราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXsdNet">
+            <summary>
+            มูลค่าสุทธิก่อนท้ายบิล 
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXpdGetQtyDiv">
+            <summary>
+            จำนวนชุดที่ได้รับโปรโมชั่น
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtXpdGetType">
+            <summary>
+            1:ลดบาท 2:ลด% 3:ปรับราคา 4:.ใช้กลุ่มราคา 5:แถม(Free) 6:ไม่กำหนด
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXpdGetValue">
+            <summary>
+            มูลค่า แปรผันตามรูปแบบส่วนลด
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXpdDis">
+            <summary>
+            ส่วนลดที่ได้รับจากโปรโมชั่น
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXpdPerDisAvg">
+            <summary>
+            เปอร์เซ็นส่วนลดที่จะได้รับ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXpdDisAvg">
+            <summary>
+            ส่วนลดที่ได้รับ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rcXpdPoint">
+            <summary>
+            จำนวนแต้มที่ได้รับ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtXpdStaRcv">
+            <summary>
+            สถานะรับของแถม 1:จุดขายคำนวนอัตโนมัติ 2:จุดขายเลือกได้ 3:จุดบริการ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtPplCode">
+            <summary>
+            รหัสกลุ่มราคา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtXpdCpnText">
+            <summary>
+            ข้อความ ท้ายบิล
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalPD.rtCpdBarCpn">
+            <summary>
+            รหัสคูปอง
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rnXrcSeqNo">
+             <summary>
+            ลำดับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtRcvCode">
+             <summary>
+            รหัสการชำระ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtRcvName">
+             <summary>
+            ชื่อการรับชำระ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtXrcRefNo1">
+             <summary>
+            เลขที่อ้างอิง1
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtXrcRefNo2">
+             <summary>
+            เลขที่อ้างอิง2
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rdXrcRefDate">
+             <summary>
+            วันที่อ้างอิง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtXrcRefDesc">
+             <summary>
+            สาขาธนาคาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtBnkCode">
+             <summary>
+            รหัสธนาคาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtRteCode">
+             <summary>
+            สกุลเงิน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rcXrcRteFac">
+             <summary>
+            อัตราแลกเปลี่ยน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rcXrcFrmLeftAmt">
+             <summary>
+            ยอดคงค้าง เช่น 480+100 (รวมยอดมัดจำ)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rcXrcUsrPayAmt">
+             <summary>
+            ยอดแบงค์  เช่น 1000
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rcXrcDep">
+             <summary>
+            หักยอดมัดจำสินค้า เช่น 100
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rcXrcNet">
+             <summary>
+            ยอดชำระจริง  เช่น 480   (ไม่รวมยอดมัดจำ)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rcXrcChg">
+             <summary>
+            เงินทอน เช่น 420
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtXrcRmk">
+             <summary>
+            หมายเหตุ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtPhwCode">
+             <summary>
+            รหัสเครื่อง EDC
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtXrcRetDocRef">
+             <summary>
+            เลขที่เอกสารอ้างอิง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtXrcStaPayOffline">
+             <summary>
+            สถานะใช้งาน function รับชำระแบบ ว่าง/Null :Online ,1: Offline
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRC.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rnXrdSeqNo">
+             <summary>
+            ลำดับการ Redeem
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rtRdhDocType">
+             <summary>
+            ประเภทเอกสาร 1: Redeem สินค้า แต้ม+เงิน 2: Redeem ส่วนลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rnXrdRefSeq">
+             <summary>
+            RD Type 1 อ้างอิงลำดับใน DT ,RD Type 2 อ้างอิงลำดับใน RC
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rtXrdRefCode">
+             <summary>
+            เลขที่อ้างอิง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rcXrdPdtQty">
+             <summary>
+            จำนวนสินค้าที่ Redeem
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoSalRD.rnXrdPntUse">
+             <summary>
+            จำนวนแต้มที่ใช้แลก
+             </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtCgpCode" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtMemCode" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtRedRefDoc" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtRedRefSpl" -->
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtRedRefInt">
+             <summary>
+            อ้างอิงเอกสาร เช่น กรณีคืนอ้างอิงบิลขาย , บิลขายเก็บค่าเป็นว่าง
+             </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rdRedRefDate" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rcRedPntB4Bill" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rcRedPntBillQty" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtRedPntStaClosed" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rdRedPntStart" -->
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rdRedPntExpired">
+            <summary>
+            วันที่แต้มหมดอายุ
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rdLastUpdOn" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtLastUpdBy" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rdCreateOn" -->
+        <!-- Badly formed XML comment ignored for member "P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtCreateBy" -->
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnRedeem.rtRedPntDocType">
+             <summary>
+            ประเภทบิล   1 = บิลขาย , 2:บิล Void   Def: 1
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtCgpCode">
+             <summary>
+            รหัสกลุ่มบริษัท
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtMemCode">
+             <summary>
+            รหัสสมาชิก / เลขที่บัตรประจำตัวประชาชน/Passport
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtTxnRefDoc">
+             <summary>
+            เอกสารอ้างอิง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtTxnRefInt">
+             <summary>
+            อ้างอิงเอกสาร เช่น กรณีคืนอ้างอิงบิลขาย , บิลขายเก็บค่าเป็นว่าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtTxnRefSpl">
+             <summary>
+            รหัสผู้จำหน่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rdTxnRefDate">
+             <summary>
+            วันที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rcTxnRefGrand">
+             <summary>
+            ยอดซื้อสุทธิ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rcTxnPntOptBuyAmt">
+             <summary>
+            เงื่อนไข อัตราส่วนมูลค่าซื้อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rcTxnPntOptGetQty">
+             <summary>
+            เงื่อนไข อัตราแต้มที่จะได้
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rcTxnPntB4Bill">
+             <summary>
+            จำนวนแต้มสะสมขณะสร้างเอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rdTxnPntStart">
+             <summary>
+            วันที่เริ่มใช้งานแต้มได้
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rdTxnPntExpired">
+             <summary>
+            วันที่เริ่มใช้งานแต้มได้
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rcTxnPntBillQty">
+             <summary>
+            จำนวนแต้มที่ได้
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rcTxnPntUsed">
+             <summary>
+            แต้มที่ใช้ไปแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rcTxnPntExpired">
+             <summary>
+            แต้มที่หมดอายุ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtTxnPntStaClosed">
+             <summary>
+            สถานะ 1:คำนวนได้ 2:ไม่นำไปคำนวนแล้ว priority สูงกว่าช่วง start-expired
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleDocRefer.cmlResInfoTxnSale.rtTxnPntDocType">
+             <summary>
+            ประเภทบิล   1 = บิลขาย , 2:บิล Void   Def: 1
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoOrdersByList.rtBchCode">
+            <summary>
+            รหัสสาขา
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoOrdersByList.rtDocNo">
+            <summary>
+            เลขที่เอกสาร
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoOrdersByList.rdDocDate">
+            <summary>
+            วันที่เอกสาร
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoOrdersByList.rcGrand">
+            <summary>
+            ยอดรวม (FCXshGrand)
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoOrdersByList.rtUsrKey">
+            <summary>
+            พนักงาน Key
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoOrdersByList.rtUsrApv">
+            <summary>
+            ผู้อนุมัติ
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoOrdersByList.rtCshOrCrd">
+            <summary>
+            สด/เครดิต 1:สด 2:credit
+            </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rnXsdSeqNo">
+             <summary>
+            ลำดับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtPdtCode">
+             <summary>
+            รหัสสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdPdtName">
+             <summary>
+            ชื่อสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtPunCode">
+             <summary>
+            รหัสหน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtPunName">
+             <summary>
+            ชื่อหน่วยสินค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdFactor">
+             <summary>
+            อัตราส่วนต่อหน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdBarCode">
+             <summary>
+            บาร์โค้ด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtSrnCode">
+             <summary>
+            รหัส ซีเรียล
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdVatType">
+             <summary>
+            ประเภทภาษี 1:มีภาษี, 2:ไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtVatCode">
+             <summary>
+            รหัสภาษี ณ. ซื้อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdVatRate">
+             <summary>
+            อัตราภาษี ณ. ซื้อ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdSaleType">
+             <summary>
+            ใช้ราคาขาย 1:บังคับ, 2:แก้ไข, 3:เครื่องชั่ง,4: นน.
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdSalePrice">
+             <summary>
+            จากราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน(HD.FCXphRteFac)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdQty">
+             <summary>
+            จำนวนชื้น ตาม หน่วย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdQtyAll">
+             <summary>
+            จำนวนรวมหน่วยเล็กสุด (FCXpdQty*FCXpdFactor)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdSetPrice">
+             <summary>
+            ราคาซื้อ ตาม หน่วย * อัตราแลกเปลี่ยน(HD.FCXphRteFac)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdAmtB4DisChg">
+             <summary>
+            มูลค่ารวมก่อนลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdDis">
+             <summary>
+            มูลค่ารวมส่วนลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdChg">
+             <summary>
+            มูลค่ารวมส่วนชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdNet">
+             <summary>
+            มูลค่าสุทธิก่อนท้ายบิล (FCXpdAmt-FCXpdDis+FCXpdChg)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdNetAfHD">
+             <summary>
+            มูลค่าสุทธิหลังท้ายบิล (Net-SUM(Disท้ายบิล))
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdVat">
+             <summary>
+            มูลค่าภาษี IN: NetAfHD-((NetAfHD*100)/(100+VatRate)) ,EX: ((NetAfHD*(100+VatRate))/100)-NetAfHD
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdVatable">
+             <summary>
+            มูลค่าแยกภาษี (NetAfHD-FCXpdVat)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdWhtAmt">
+             <summary>
+            มูลค่าภาษี ณ. ที่จ่าย (FCXpdVatable* FCXpdWhtRate%)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdWhtCode">
+             <summary>
+            รหัส ภาษี ณ. ที่จ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdWhtRate">
+             <summary>
+            อัตราภาษี ณ. ที่จ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdCostIn">
+             <summary>
+            ต้นทุนรวมใน (FCXpdVat+FCXpdVatable)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdCostEx">
+             <summary>
+            ต้นทุนแยกนอก (FCXpdVatable)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdStaPdt">
+             <summary>
+            สถานะ สินค้า 1:ขาย, 2:คืน, 3:แถม, 4: ยกเลิก (Void)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdQtyLef">
+             <summary>
+            จำนวนคงเหลือ ตามหน่วย (Default:FCXpdQty)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdQtyRfn">
+             <summary>
+            จำนวนคืนตามหน่วย (Default:0)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdStaPrcStk">
+             <summary>
+            สถานะตัดสต๊อก ว่าง:ยังไม่ทำ, 1:ทำแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdStaAlwDis">
+             <summary>
+            สถานะอนุญาต ลด/ชาร์จ  1:อนุญาต , 2:ไม่อนุญาต
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rnXsdPdtLevel">
+             <summary>
+            ระดับสิน(ค้าชุด)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdPdtParent">
+             <summary>
+            รหัสสินค้าชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rcXsdQtySet">
+             <summary>
+            จำนวนต่อชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtPdtStaSet">
+             <summary>
+            สถานะ สินค้าชุด 1:ทั่วไป, 2:สินค้าประกอบ, 3:สินค้าชุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtXsdRmk">
+             <summary>
+            หมายเหตุรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDT.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rnXsdSeqNo">
+             <summary>
+            ลำดับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rdXddDateIns">
+             <summary>
+            วัน/เวลาทำรายการ [dd/mm/yyyy H:mm:ss]
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rnXddStaDis">
+             <summary>
+            สถานะส่วนลด 1: ลดรายการ ,2: ลดท้ายบิล
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rtXddDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rtXddDisChgType">
+             <summary>
+            ประเภทลดชาร์จ 1:ลดบาท 2: ลด % 3: ชาร์จบาท 4: ชาร์จ %
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rcXddNet">
+             <summary>
+            มูลค่าสุทธิก่อนลดชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoDTDis.rcXddValue">
+             <summary>
+            ยอดลด/ชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร  Def : XYYPOS-1234567 Gen ตาม TCNTAuto
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtShpCode">
+             <summary>
+            ร้านค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rnXshDocType">
+             <summary>
+            ประเภทเอกสาร ดูจาก ตาราง TSysDocType
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rdXshDocDate">
+             <summary>
+            วันที่/เวลา เอกสาร dd/mm/yyyy H:mm:ss
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshCshOrCrd">
+             <summary>
+            สด/เครดิต 1:สด 2:credit
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshVATInOrEx">
+             <summary>
+            ภาษีมูลค่าเพิ่ม 1:รวมใน, 2:แยกนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtDptCode">
+             <summary>
+            แผนก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtWahCode">
+             <summary>
+            คลัง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtPosCode">
+             <summary>
+            เครื่องจุดขาย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtShfCode">
+             <summary>
+            รอบ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rnSdtSeqNo">
+             <summary>
+            ลำดับการ SignIn DT
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtUsrCode">
+             <summary>
+            พนักงาน Key
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtSpnCode">
+             <summary>
+            พนักงานขาย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshApvCode">
+             <summary>
+            ผู้อนุมัติ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtCstCode">
+             <summary>
+            ลูกค้า
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshDocVatFull">
+             <summary>
+            เลขที่ใบกำกับ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshRefExt">
+             <summary>
+            อ้างอิง เลขที่เอกสาร ภายนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rdXshRefExtDate">
+             <summary>
+            อ้างอิง วันที่เอกสาร ภายนอก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshRefInt">
+             <summary>
+            อ้างอิง เลขที่เอกสาร ภายใน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rdXshRefIntDate">
+             <summary>
+            อ้างอิง วันที่เอกสาร ภายใน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshRefAE">
+             <summary>
+            อ้างถึงเอกสาร มัดจำ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rnXshDocPrint">
+             <summary>
+            จำนวนครั้งที่พิมพ์
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtRteCode">
+             <summary>
+            รหัสสกุลเงิน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshRteFac">
+             <summary>
+            อัตราแลกเปลี่ยน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshTotal">
+             <summary>
+            ยอดรวม
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshTotalNV">
+             <summary>
+            ยอดรวมสินค้าไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshTotalNoDis">
+             <summary>
+            ยอดรวมสินค้าห้ามลด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshTotalB4DisChgV">
+             <summary>
+            ยอมรวมสินค้าลดได้ และมีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshTotalB4DisChgNV">
+             <summary>
+            ยอมรวมสินค้าลดได้ และไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshDis">
+             <summary>
+            มูลค่ารวมส่วนลด SUM(HDis.FCXddDisVat+HDis.FCXddDisNoVat)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshChg">
+             <summary>
+            มูลค่ารวมส่วนชาร์จ SUM(HDis.FCXddChgVat+HDis.FCXddChgNoVat)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshTotalAfDisChgV">
+             <summary>
+            ยอดรวมหลังลด และมีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshTotalAfDisChgNV">
+             <summary>
+            ยอดรวมหลังลด และไม่มีภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshRefAEAmt">
+             <summary>
+            ยอดมัดจำ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshAmtV">
+             <summary>
+            ยอดรวมเฉพาะภาษี (FCXshTotal-FCXshTotalNV-(FCXshTotalB4DisChgV-FCXshTotalAfDisChgV))
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshAmtNV">
+             <summary>
+            ยอดรวมเฉพาะไม่มีภาษี (FCXshTotalNV-(FCXshTotalB4DisChgNV-FCXshTotalAfDisChgNV))
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshVat">
+             <summary>
+            ยอดภาษี
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshVatable">
+             <summary>
+            ยอดแยกภาษี (FCXshAmtV-FCXshVat)+FCXshAmt์NV
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshWpCode">
+             <summary>
+            รหัสอัตราภาษี ณ ที่จ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshWpTax">
+             <summary>
+            ภาษีหัก ณ ที่จ่าย SUM(FCXpdWhtAmt)  /Key In
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshGrand">
+             <summary>
+            ยอดรวม FCXshAmtV+FCXshAmtNV+FCXshRnd
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshRnd">
+             <summary>
+            ยอดปัดเศษ (เมื่อชำระด้วยเงินสดเฉพาะขายปลีก)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshGndText">
+             <summary>
+            ข้อความ ยอดรวมสุทธิ(FCXphGrand)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshPaid">
+             <summary>
+            ยอดจ่าย
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rcXshLeft">
+             <summary>
+            ยอดค้าง Default: 0
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshRmk">
+             <summary>
+            หมายเหตุ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshStaRefund">
+             <summary>
+            สถานะ การคืน 1:ไม่เคยคืน, 2:เคยคืน
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshStaDoc">
+             <summary>
+            สถานะ เอกสาร  1:สมบูรณ์, 2:ไม่สมบูรณ์, 3:ยกเลิก
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshStaApv">
+             <summary>
+            สถานะ อนุมัติ เอกสาร ว่าง:ยังไม่ทำ, 1:อนุมัติแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshStaPrcDoc">
+             <summary>
+            สถานะอนุมัติ 1: อนุมัติแล้ว  ว่าง null ยังไม่อนุมัติ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtXshStaPaid">
+             <summary>
+            สถานะ รับ/จ่ายเงิน 1:ยังไม่จ่าย 2:บางส่วน, 3:ครบ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rnXshStaDocAct">
+             <summary>
+            สถานะ เคลื่อนไหว 0:NonActive, 1:Active
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rnXshStaRef">
+             <summary>
+            สถานะ อ้างอิง 0:ไม่เคยอ้างอิง, 1:อ้างอิงบางส่วน, 2:อ้างอิงหมดแล้ว
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rdLastUpdOn">
+             <summary>
+            วันที่ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtLastUpdBy">
+             <summary>
+            ผู้ปรับปรุงรายการล่าสุด
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rdCreateOn">
+             <summary>
+            วันที่สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHD.rtCreateBy">
+             <summary>
+            ผู้สร้างรายการ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtBchCode">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshDocNo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshCardID">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshCstName">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshCstTel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshCardNo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rnXshCrTerm">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rdXshDueDate">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rdXshBillDue">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshCtrName">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rdXshTnfDate">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshRefTnfID">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rnXshAddrShip">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rnXshAddrTax">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDCst.rtXshStaAlwPosCalSo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rtBchCode">
+             <summary>
+            สาขาสร้าง
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rtXshDocNo">
+             <summary>
+            เลขที่เอกสาร
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rdXhdDateIns">
+             <summary>
+            วัน/เวลาทำรายการ [dd/mm/yyyy H:mm:ss]
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rtXhdDisChgTxt">
+             <summary>
+            ข้อความมูลค่าลดชาร์จ เช่น 5 หรือ 5%
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rtXhdDisChgType">
+             <summary>
+            ประเภทลดชาร์จ 1:ลดบาท 2: ลด % 3: ชาร์จบาท 4: ชาร์จ %
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rcXhdTotalAfDisChg">
+             <summary>
+            ยอดรวมหลังลด (FCXshTotalAfDisChgV+FCXshTotalAfDisChgNV)
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rcXhdDisChg">
+             <summary>
+            ยอดลด/ชาร์จ
+             </summary>
+        </member>
+        <member name="P:API2ARDoc.Models.Webservice.Response.SaleOrder.cmlResInfoTARTSoHDDis.rcXhdAmt">
+             <summary>
+            มูลค่าลด/ชาร์จ
+             </summary>
+        </member>
+        <member name="T:API2ARDoc.Models.WebService.cmlResBase">
+            <summary>
+            Class Response base
+            </summary>
+        </member>
+        <member name="F:API2ARDoc.Models.WebService.cmlResBase.tCode">
+            <summary>
+            System process status.
+            </summary>
+        </member>
+        <member name="F:API2ARDoc.Models.WebService.cmlResBase.tDesc">
+            <summary>
+            System process description.
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Models.WebService.cmlResItem`1">
+            <summary>
+            Class model list Item response
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:API2ARDoc.Models.WebService.cmlResItem`1.oItem">
+            <summary>
+            list Item response
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Models.WebService.cmlResIsOnline">
+            <summary>
+             Class model response online
+            </summary>
+        </member>
+        <member name="T:API2ARDoc.Models.WebService.cmlResService`1">
+            <summary>
+            Class model list Item response
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:API2ARDoc.Models.WebService.cmlResService`1.oItem">
+            <summary>
+            list Item response
+            </summary>
+        </member>
+    </members>
+</doc>

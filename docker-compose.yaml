@@ -1,0 +1,20 @@
+version: '3'
+services:
+  project-api2ardoc:
+    build: 
+      context: ./ #solution folder
+      dockerfile: API2ARDoc/Dockerfile #project folder
+    image: api2ardoc:5.20002.0.10 #image name template <customer>/<project>/<version>
+    container_name: pos-api2ardoc #skc template
+    restart: always
+    ports:
+      - "5000:80"
+    #environment: #config for app
+    #  ENV_Info: "Config from docker-compose"
+    #  ENV_tRQHost: ""
+    #  ENV_tRQUsr: ""
+    #  ENV_tRQPwd: ""
+    #  ENV_tRQVirtual: ""
+    #  ENV_tAccess: ""
+    #  ENV_tConnDB: ""
+    #  ENV_redisIpAddress: ""

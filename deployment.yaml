@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pos-api2ardoc
+  labels:
+    app: pos-api2ardoc
+    node: aksp01
+    type: api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api2ardoc
+  template:
+    metadata:
+      labels:
+        app: api2ardoc
+    spec:
+      nodeSelector:
+        agentpool: aksp01
+        "kubernetes.io/os": linux
+      containers:
+        - name: api2ardoc
+          image: p703acrsi01.azurecr.io/api/api2ardoc:5.20002.0.0922
+          ports:
+            - containerPort: 80
+          #envFrom:
+          #  - configMapRef:
+          #      name: skc-app-config
+          #      optional: true
+          env:
+            - name: ENV_Info
+              value: "Config from Deployment.yaml"
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+            - name: ENV_VirtualPath
+              value: "/api2ardoc"
+            - name: ENV_tRQHost
+              value: "N1mFqK4xMuN0aCW4VNxf5gkG7n3FezJv"
+            - name: ENV_tRQUsr
+              value: "8BP7tjqg/QpswrUHiwMomA=="
+            - name: ENV_tRQPwd
+              value: "8BP7tjqg/QpswrUHiwMomA=="
+            - name: ENV_tRQVirtual
+              value: "oklV+QiMfR0lAF3vadbEThiIETfkaBEsp3wmnym0gww="
+            - name: ENV_tAccess
+              value: "3Wi16CeEjmTEV0XkuI8ddu2F4SyiOeK/nht7vUnDR2CY0pQuiqWtzlJzDY2m9ctCMFOVhYy74etdHTY+z8HKUaavmI+gfFyMCefZqkaVgdU="
+            - name: ENV_tConnDB
+              value: "Data Source = p703sssi01-sd01.public.ca266396d47e.database.windows.net, 3342;Initial Catalog = AdaSKCAcc_UAT;Persist Security Info = True;User ID = administrator_pos;Password = P@ssw0rd@SkcKubo4499;MultipleActiveResultSets=true;"
+            - name: ENV_redisIpAddress
+              value: ""

@@ -1,0 +1,39 @@
+﻿#แสดงรายชื่อ DockerImage
+docker images
+#แสดงรายชื่อและสถานะ Container
+docker ps -a
+
+#stop container
+docker-compose down
+#rebuild container
+docker-compose up -d --build
+
+#แสดงรายชื่อ DockerImage
+docker images
+#แสดงรายชื่อและสถานะ Container
+docker ps -a
+
+#ทดสอบการทำงานให้เรียบร้อย
+docker logs pos-api2ardoc
+docker exec pos-api2ardoc -it -- /bin/sh
+#-----------------------------
+
+#push docker to Azure container registry
+docker push p703acrsi01.azurecr.io/api/api2ardoc:5.20002.0.0921
+
+#crate aks deployment from acr
+kubectl apply -f deployment.yaml
+kubectl describe deployment/pos-api2ardoc
+
+#create Cluster Service
+#flag ClusterIP | LoadBalancer (หรือถ้าไม่ระบุ type default = ClusterIP)
+#ClusterIP จะมีแค่ InternalIP
+#LoadBalancer มีทั้ง ExternalIP และ InternalIP
+kubectl apply -f cluster-service.yaml
+
+
+#finish
+
+#goto https://portal.azure.com/
+
+kubectl exec deployment/pos-api2ardoc -it -- /bin/sh

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pos-api2ardoc-cluster-service
+spec:
+  selector:
+    app: api2ardoc
+  ports:
+    - port: 80
+      targetPort: 80
+  #type: LoadBalancer #flag => ClusterIP(หรือไม่ระบุก็ได้) | LoadBalancer
