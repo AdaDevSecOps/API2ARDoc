@@ -48,7 +48,7 @@ pipeline
                 echo 'Remove Container...'
                 script
                 {
-                    bat 'docker rm -f api2ardoc" '
+                    bat 'docker rm -f api2ardoc '
                 }
             }
         }
@@ -59,7 +59,7 @@ pipeline
                 echo 'Run Container...'
                 script
                 {
-                    bat 'docker run -d -p 8999:80 --name api2ardoc api2ardoc:5.20002.0.10 '
+                    bat 'docker run -d --name api2ardoc api2ardoc:5.20002.0.10 '
                 }
             }
         }
